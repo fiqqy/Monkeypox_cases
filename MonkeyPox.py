@@ -79,7 +79,7 @@ top10plots(col='Travel_History_No')
 
 -------------------------------------------------------------------------------
 
-#Correlations
+# Correlations
 
 b = ['blue']
 Cases_Hospitalizations_Corr = Worldwide_cases.plot.scatter('Confirmed_Cases', 'Hospitalized', figsize = (10,6), color = b)
@@ -99,7 +99,14 @@ Cases_Travellersno_Corr.set_xlabel("Confirmed Cases", fontweight ='bold')
 Cases_Travellersno_Corr.set_ylabel("No Travel History", fontweight ='bold')
 plt.title('Confirmed Cases vs No Travel History', fontweight='bold')
 
+# Heatmap
 
+Variables = Worldwide_cases.loc[:,['Confirmed_Cases','Hospitalized','Travel_History_Yes','Travel_History_No']]
+sns.set(font_scale=0.8)
+ax = sns.heatmap(Variables.corr(), linewidth = 1, cmap="RdYlBu", square=True)
+ax.figure.tight_layout()
+plt.title('Correlation Heatmap')
+plt.show()
 
 
 
